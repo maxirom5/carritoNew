@@ -1,0 +1,48 @@
+{# lista.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block stylesheet %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+{% block header %}
+    {{ include('header.html.twig') }}
+{% endblock %}
+
+<div id="flash-notice-container">
+    <span id="flash-notice">
+        {% for message in app.flashes('notice') %}
+            <div>
+                {{ message }}
+            </div>
+        {% endfor %}
+    </span>
+</div>
+
+<div class="title">
+    <h2>Lista de productos</h2>
+</div>
+
+<div>
+    {% for producto in productos %} 
+            <div id="boxInLine">
+                <span><img src={{producto.imagen}} alt={{producto.id}}></span>
+                <span><h2>{{producto.nombre}}</h2></span>
+                <span><p>{{producto.descripcion}}</p></span>
+                <span>
+                    <tr>
+                        <td><a href="../public/producto/{{producto.id}}"><input id="btn-light-black" type="button" value="Ver Detalle"></a></td>
+                        <td><b>Precio: $ </b>{{producto.precio}}</td>
+                    </tr>
+                    
+                </span>
+            </div>
+    {% endfor %}
+</div>
+{% endblock %}

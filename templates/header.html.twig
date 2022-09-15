@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    {% block stylesheets %}
+        <link href="{{ asset('../public/css/estilo.css') }}" type="text/css" rel="stylesheet">
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+        {% block header %}
+            <div class="header">
+                <span class="left">
+                    <h3 class="header">Carrito de Compras</h3>
+                </span>
+                <span class="right">
+                    <input id="btn-light" type="button" value="Ver Carrito">
+                    <input id="btn-light" type="button" value="Salir">
+                </span>
+            </div>
+        {% endblock %}
+    {% endblock %}
+</body>
+</html>

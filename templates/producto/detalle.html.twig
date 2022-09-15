@@ -1,0 +1,37 @@
+{# detalle.html.twig #}
+
+{% extends 'producto/lista.html.twig' %}
+
+{% block stylesheet %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {% block header %}
+        {{ include('header.html.twig') }}
+    {% endblock %}
+
+    <div class="title">
+        <h2>Detalle del Producto</h2>
+    </div>
+
+    <div id="boxInLine">
+        <span><img src=../{{producto.imagen}} alt={{producto.id}}></span>
+        <span><h2>{{producto.nombre}}</h2></span>
+        <span><p>{{producto.descripcion}}</p></span>
+        <span><b>Precio: $ </b>{{producto.precio}}</span>
+        <span>
+            <form action="{{ path('agregar_producto') }}" method="post">
+                <p>Cantidad:</p>
+                <p>
+                    <input type="hidden" name="idproducto" value="{{producto.id}}">
+                    <input type="number" name="cantidad" value="0">
+                </p>
+                <p>
+                    <input id="btn-light-black" type="submit" value="Agregar al carrito">
+                    <a href="{{ asset('../public') }}"><input id="btn-light-black" type="button" value="Volver"></a>
+                </p>    
+            </form>           
+        </span>
+    </div>
+{% endblock %}
